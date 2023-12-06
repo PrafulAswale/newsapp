@@ -4,16 +4,22 @@ import NewsItem from "./NewsItem";
 function NewsBoard() {
   const [articles, setArticles] = useState([]);
   const url = `https://newsapi.org/v2/everything?q=bitcoin&apiKey=0006b867993046c2b8f7ea8a832d94cc`;
-
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await fetch(url);
-        response.json().then((data) => setArticles(data.articles));
-      } catch (error) {
-        console.error(error);
+        response.json().then((data) => {
+          if (!data) {
+            setArticles(data.articles);
+          } else {
+            return [];
+          }
+        });
+      } catch (err) {
+        console.error(err);
       }
     }
+
     fetchData();
   });
   return (

@@ -2,15 +2,18 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../config/firebase-config";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const singup = async () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       toast.success("Registration Successfull");
+      navigate("/signin");
     } catch (error) {
       console.error(error);
     }

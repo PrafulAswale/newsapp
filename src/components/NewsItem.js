@@ -9,7 +9,7 @@ function NewsItem({ title, description, src, url }) {
       <img
         src={src}
         style={{ height: "200px", width: "360" }}
-        class="card-img-top"
+        className="card-img-top"
         alt="..."
       />
       <div className="card-body">
@@ -17,9 +17,9 @@ function NewsItem({ title, description, src, url }) {
         <p className="card-text">
           {description
             ? description.slice(0, 90)
-            : "It is inofrmation about that has happened."}
+            : "It is inofrmation about that was happened."}
         </p>
-        <a href={url} class="btn btn-primary">
+        <a href={url} className="btn btn-primary">
           Read
         </a>
       </div>

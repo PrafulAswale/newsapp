@@ -2,17 +2,21 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { auth } from "../config/firebase-config";
+import { useNavigate } from "react-router-dom";
 
 function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const signin = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      navigate("/");
       toast.success("Logged in successfully");
     } catch (error) {
       console.error(error);
+      toast.error("Email or password is incorrect!");
     }
   };
   return (
