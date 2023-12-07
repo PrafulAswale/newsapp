@@ -9,7 +9,7 @@ function NewsBoard() {
       try {
         const response = await fetch(url);
         response.json().then((data) => {
-          if (!data) {
+          if (data) {
             setArticles(data.articles);
           } else {
             return [];

@@ -47,16 +47,30 @@ function Navbar() {
               Favorites
             </Link>
 
-            <button type="button" className="btn btn-primary" onClick={signout}>
-              Signout
-            </button>
+            {auth.currentUser ? (
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={signout}
+              >
+                Signout
+              </button>
+            ) : (
+              ""
+            )}
 
-            <Link to="signup" className="nav-link">
-              Signup
-            </Link>
-            <Link to="signin" className="nav-link">
-              Signin
-            </Link>
+            {!auth.currentUser ? (
+              <>
+                <Link to="signup" className="nav-link">
+                  Signup
+                </Link>
+                <Link to="signin" className="nav-link">
+                  Signin
+                </Link>
+              </>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>
